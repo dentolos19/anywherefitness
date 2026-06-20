@@ -1,4 +1,3 @@
-import workouts from "@/data/workouts.json";
 import { Info } from "@mui/icons-material";
 import {
   Box,
@@ -11,6 +10,8 @@ import {
   ListItemText,
   ListSubheader,
 } from "@mui/material";
+
+import workouts from "@/data/workouts.json";
 
 type WorkoutSelectorDialogProps = {
   open: boolean;

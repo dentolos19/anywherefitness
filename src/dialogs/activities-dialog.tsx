@@ -1,5 +1,6 @@
-import activities from "@/data/activities.json";
 import { Dialog, DialogTitle, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+
+import activities from "@/data/activities.json";
 
 type ActivitiesDialogProps = {
   open: boolean;

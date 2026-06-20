@@ -1,9 +1,5 @@
 "use client";
 
-import { useApp } from "@/components/app-context";
-import AuthenticationView from "@/components/authentication-view";
-import LoadingView from "@/components/loading-view";
-import { checkUser, getUser } from "@/lib/database";
 import {
   AccountCircle,
   ChevronLeft,
@@ -33,6 +29,11 @@ import {
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+
+import { useApp } from "@/components/app-context";
+import AuthenticationView from "@/components/authentication-view";
+import LoadingView from "@/components/loading-view";
+import { getUser } from "@/lib/database";
 
 const navigations = [
   {
@@ -64,13 +65,12 @@ export default function AppShell(props: { children?: React.ReactNode }) {
       setLoading(false);
       return;
     }
-    if (!checkUser()) {
-      setLoading(false);
-      return;
-    }
-    const authUser = getUser();
-    setUser(authUser);
-    setLoading(false);
+    getUser()
+      .then((authUser) => {
+        if (authUser) setUser(authUser);
+      })
+      .catch((error) => console.error("Unable to restore the session.", error))
+      .finally(() => setLoading(false));
   }, []);
 
   return (

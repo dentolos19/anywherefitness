@@ -1,6 +1,9 @@
+import { Metadata } from "next";
+
 import AppProvider from "@/components/app-provider";
 import { LayoutProps } from "@/types";
-import { Metadata } from "next";
+
+import "mapbox-gl/dist/mapbox-gl.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
