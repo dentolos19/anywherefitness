@@ -1,5 +1,6 @@
-import { User } from "@/lib/database";
 import { createContext, ReactNode, useContext, useState } from "react";
+
+import { User } from "@/lib/database";
 
 type AppContextProps = {
   user: User | undefined;

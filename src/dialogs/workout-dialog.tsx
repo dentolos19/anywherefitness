@@ -1,6 +1,8 @@
-import { Workout } from "@/lib/types";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField, Typography } from "@mui/material";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
+
+import { Workout } from "@/lib/types";
+
 import WorkoutSelectorDialog from "./workout-selector-dialog";
 
 type WorkoutDialogProps = {
@@ -19,25 +21,15 @@ export default function WorkoutDialog(props: WorkoutDialogProps) {
   const [endTime, setEndTime] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  useEffect(() => {
-    if (props.data) {
-      setName(props.data.name);
-      setCategory(props.data.category || "");
-      setNotes(props.data.notes || "");
-      setReps(props.data.reps || 0);
-      setSets(props.data.sets || 0);
-      setStartTime(props.data.startTime || "");
-      setEndTime(props.data.endTime || "");
-    } else {
-      setName("");
-      setCategory("");
-      setNotes("");
-      setReps(0);
-      setSets(0);
-      setStartTime("");
-      setEndTime("");
-    }
-  }, [props.data]);
+  const handleOpen = () => {
+    setCategory(props.data?.category || "");
+    setEndTime(props.data?.endTime || "");
+    setName(props.data?.name || "");
+    setNotes(props.data?.notes || "");
+    setReps(props.data?.reps || 0);
+    setSets(props.data?.sets || 0);
+    setStartTime(props.data?.startTime || "");
+  };
 
   const handleCancel = () => {
     props.onClose(undefined);
@@ -73,6 +65,7 @@ export default function WorkoutDialog(props: WorkoutDialogProps) {
         onSubmit={handleSave}
         onClose={handleCancel}
         maxWidth={"sm"}
+        slotProps={{ transition: { onEnter: handleOpen } }}
         fullWidth
       >
         <DialogTitle>Workout Manager</DialogTitle>

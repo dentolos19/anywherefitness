@@ -1,6 +1,7 @@
-import { Goal } from "@/lib/types";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField, Typography } from "@mui/material";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
+
+import { Goal } from "@/lib/types";
 
 type GoalDialogProps = {
   open: boolean;
@@ -13,17 +14,11 @@ export default function GoalDialog(props: GoalDialogProps) {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
 
-  useEffect(() => {
-    if (props.data) {
-      setTitle(props.data.title);
-      setDescription(props.data.description || "");
-      setDate(props.data.due || "");
-    } else {
-      setTitle("");
-      setDescription("");
-      setDate("");
-    }
-  }, [props.data]);
+  const handleOpen = () => {
+    setDate(props.data?.due || "");
+    setDescription(props.data?.description || "");
+    setTitle(props.data?.title || "");
+  };
 
   const handleCancel = () => {
     props.onClose(undefined);
@@ -35,7 +30,15 @@ export default function GoalDialog(props: GoalDialogProps) {
   };
 
   return (
-    <Dialog component={"form"} open={props.open} onSubmit={handleSave} onClose={handleCancel} maxWidth={"xs"} fullWidth>
+    <Dialog
+      component={"form"}
+      open={props.open}
+      onSubmit={handleSave}
+      onClose={handleCancel}
+      maxWidth={"xs"}
+      slotProps={{ transition: { onEnter: handleOpen } }}
+      fullWidth
+    >
       <DialogTitle>Goal Setting</DialogTitle>
       <DialogContent>
         <Stack spacing={2}>

@@ -2,25 +2,30 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "anywherefitness",
   "main": ".open-next/worker.js",
-  "compatibility_date": "2026-01-01",
+  "compatibility_date": "2026-05-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "keep_vars": true,
   "observability": {
-    "logs": {
-      "enabled": true,
-    },
-    "traces": {
-      "enabled": true,
-    },
+    "enabled": true
+  },
+  "route": {
+    "pattern": "anywherefitness.dennise.me",
+    "custom_domain": true
   },
   "assets": {
     "binding": "ASSETS",
-    "directory": ".open-next/assets",
+    "directory": ".open-next/assets"
   },
-  "routes": [
+  "d1_databases": [
     {
-      "pattern": "anywherefitness.dennise.me",
-      "custom_domain": true,
-    },
+      "binding": "DATABASE",
+      "database_name": "anywherefitness",
+      "migrations_dir": "migrations"
+    }
   ],
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "anywherefitness"
+    }
+  ]
 }

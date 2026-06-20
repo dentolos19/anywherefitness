@@ -1,11 +1,13 @@
 "use client";
 
-import ActivitiesDialog from "@/dialogs/activities-dialog";
 import { Add, FitnessCenter, MonitorHeart, MusicNote, PlayArrow } from "@mui/icons-material";
 import { Box, Chip, SpeedDial, SpeedDialAction } from "@mui/material";
-import GoogleMapReact from "google-map-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
+import ActivitiesDialog from "@/dialogs/activities-dialog";
+
+import MapView from "./_components/map-view";
 
 export default function Page() {
   const router = useRouter();
@@ -27,23 +29,21 @@ export default function Page() {
     <>
       <ActivitiesDialog open={activitiesDialogOpen} onClose={handleActivitiesDialogClose} />
       <Box sx={{ height: "100%" }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: "" }}
-          defaultCenter={{
-            lat: 1.3791139,
-            lng: 103.849472,
-          }}
-          defaultZoom={16}
-        />
+        <MapView />
         {activity && activity !== "None" && (
           <Chip
+            color={"primary"}
             label={activity}
             sx={{
+              boxShadow: 4,
+              fontWeight: 500,
+              left: "50%",
               position: "fixed",
               top: 100,
-              left: "50%",
               transform: "translate(-50%, 0)",
+              zIndex: 1500,
             }}
+            variant={"filled"}
           />
         )}
         <SpeedDial ariaLabel={""} icon={<Add />} sx={{ position: "fixed", bottom: { xs: 80, sm: 30 }, left: 30 }}>

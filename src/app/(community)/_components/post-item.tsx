@@ -1,5 +1,3 @@
-import { useApp } from "@/components/app-context";
-import { Post, getFileUrl } from "@/lib/database";
 import { Chat, Delete, Edit, Favorite, MoreVert, Share } from "@mui/icons-material";
 import {
   Avatar,
@@ -17,6 +15,9 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+
+import { useApp } from "@/components/app-context";
+import { Post, getFileUrl } from "@/lib/database";
 
 type PostItemProps = {
   post: Post;
