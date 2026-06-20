@@ -1,11 +1,12 @@
 "use client";
 
-import { useApp } from "@/components/app-context";
-import { getFileUrl } from "@/lib/database";
 import { Edit } from "@mui/icons-material";
 import { Avatar, Box, Button, Container, Divider, Fab, Paper, Stack, Tab, Tabs, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
+import { useApp } from "@/components/app-context";
+import { getFileUrl } from "@/lib/database";
 
 export default function Page() {
   const router = useRouter();

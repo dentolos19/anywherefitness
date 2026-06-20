@@ -1,11 +1,12 @@
 "use client";
 
-import ActivitiesDialog from "@/dialogs/activities-dialog";
 import { Add, FitnessCenter, MonitorHeart, MusicNote, PlayArrow } from "@mui/icons-material";
 import { Box, Chip, SpeedDial, SpeedDialAction } from "@mui/material";
 import GoogleMapReact from "google-map-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
+import ActivitiesDialog from "@/dialogs/activities-dialog";
 
 export default function Page() {
   const router = useRouter();

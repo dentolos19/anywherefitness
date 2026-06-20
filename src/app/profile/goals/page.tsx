@@ -1,10 +1,5 @@
 "use client";
 
-import { useApp } from "@/components/app-context";
-import LoadingView from "@/components/loading-view";
-import GoalDialog from "@/dialogs/goal-dialog";
-import { Profile, getProfile, updateProfile } from "@/lib/database";
-import { Goal } from "@/lib/types";
 import { Add, Check } from "@mui/icons-material";
 import {
   Container,
@@ -18,6 +13,12 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+
+import { useApp } from "@/components/app-context";
+import LoadingView from "@/components/loading-view";
+import GoalDialog from "@/dialogs/goal-dialog";
+import { Profile, getProfile, updateProfile } from "@/lib/database";
+import { Goal } from "@/lib/types";
 
 export default function Page() {
   const { user } = useApp();

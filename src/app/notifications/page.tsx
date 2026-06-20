@@ -1,6 +1,5 @@
 "use client";
 
-import NotificationDialog from "@/dialogs/notification-dialog";
 import { ChevronRight, Notifications } from "@mui/icons-material";
 import {
   Container,
@@ -13,6 +12,8 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+
+import NotificationDialog from "@/dialogs/notification-dialog";
 
 const notifications = [
   {

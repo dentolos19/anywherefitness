@@ -1,10 +1,5 @@
 "use client";
 
-import { useApp } from "@/components/app-context";
-import LoadingView from "@/components/loading-view";
-import WorkoutDialog from "@/dialogs/workout-dialog";
-import { Profile, getProfile, updateProfile } from "@/lib/database";
-import { Workout } from "@/lib/types";
 import { Add, Delete, FitnessCenter, MonitorHeart } from "@mui/icons-material";
 import {
   Container,
@@ -20,6 +15,12 @@ import {
 } from "@mui/material";
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 import { useState } from "react";
+
+import { useApp } from "@/components/app-context";
+import LoadingView from "@/components/loading-view";
+import WorkoutDialog from "@/dialogs/workout-dialog";
+import { Profile, getProfile, updateProfile } from "@/lib/database";
+import { Workout } from "@/lib/types";
 
 export default function Page() {
   const { user } = useApp();

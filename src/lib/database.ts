@@ -1,7 +1,9 @@
-import { Goal, Workout } from "@/lib/types";
 import PocketBase from "pocketbase";
 
-const database = new PocketBase("https://anywherefitness.pockethost.io");
+import { Goal, Workout } from "@/lib/types";
+
+const database = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL!);
+database.autoCancellation(false);
 
 export type User = {
   id: string;
@@ -47,7 +49,7 @@ export function checkUser() {
 }
 
 export function getUser() {
-  return database.authStore.model as User;
+  return database.authStore.model as unknown as User;
 }
 
 export function updateUser(form: FormData) {

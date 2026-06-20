@@ -1,11 +1,12 @@
 "use client";
 
-import { useApp } from "@/components/app-context";
-import { getFileUrl, logoutUser, updateUser } from "@/lib/database";
 import { Edit } from "@mui/icons-material";
 import { Avatar, Badge, Box, Button, Container, IconButton, Paper, Stack, TextField, Typography } from "@mui/material";
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 import { ChangeEvent, useState } from "react";
+
+import { useApp } from "@/components/app-context";
+import { getFileUrl, logoutUser, updateUser } from "@/lib/database";
 
 export default function Page() {
   const { user, setUser } = useApp();

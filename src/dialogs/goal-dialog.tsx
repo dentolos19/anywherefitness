@@ -1,6 +1,7 @@
-import { Goal } from "@/lib/types";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField, Typography } from "@mui/material";
 import { FormEvent, useEffect, useState } from "react";
+
+import { Goal } from "@/lib/types";
 
 type GoalDialogProps = {
   open: boolean;

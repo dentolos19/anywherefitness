@@ -1,13 +1,14 @@
 "use client";
 
-import PostItem from "@/app/(community)/_components/post-item";
-import LoadingView from "@/components/loading-view";
-import PostDialog, { PostDialogData } from "@/dialogs/post-dialog";
-import { Post, createPost, deletePost, getPosts } from "@/lib/database";
 import { Add } from "@mui/icons-material";
 import { Alert, Box, Container, Fab, Stack } from "@mui/material";
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 import { useState } from "react";
+
+import PostItem from "@/app/(community)/_components/post-item";
+import LoadingView from "@/components/loading-view";
+import PostDialog, { PostDialogData } from "@/dialogs/post-dialog";
+import { Post, createPost, deletePost, getPosts } from "@/lib/database";
 
 export default function Page() {
   const [loading, setLoading] = useState(true);

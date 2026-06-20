@@ -1,8 +1,9 @@
+import { Box, Button, Container, Paper, Stack, TextField } from "@mui/material";
+import { FormEvent, useState } from "react";
+
 import { useApp } from "@/components/app-context";
 import LoadingView from "@/components/loading-view";
 import { loginUser, registerUser } from "@/lib/database";
-import { Box, Button, Container, Paper, Stack, TextField } from "@mui/material";
-import { FormEvent, useState } from "react";
 
 export default function AuthenticationView() {
   const { setUser } = useApp();
@@ -50,14 +51,6 @@ export default function AuthenticationView() {
     );
   };
 
-  const guestHandler = () => {
-    setLoading(true);
-    loginUser({ username: "Guest", password: "wNkYXSBpFCLHC4C" }).then((user) => {
-      setUser(user.record);
-      setLoading(false);
-    });
-  };
-
   return (
     <Container sx={{ my: 2 }}>
       <Paper sx={{ maxWidth: 400, mx: "auto", padding: 2 }}>
@@ -100,9 +93,6 @@ export default function AuthenticationView() {
                 Register
               </Button>
             </Box>
-            <Button color={"secondary"} variant={"contained"} fullWidth sx={{ marginTop: 1 }} onClick={guestHandler}>
-              Continue As Guest
-            </Button>
           </Box>
         ) : (
           <Box component={"form"} onSubmit={handleRegister}>
