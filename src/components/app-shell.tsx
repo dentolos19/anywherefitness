@@ -26,7 +26,7 @@ import {
   Toolbar,
   Tooltip,
 } from "@mui/material";
-import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
+import { unstable_useEnhancedEffect as useEnhancedEffect } from "@mui/material/utils";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 

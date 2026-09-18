@@ -71,11 +71,13 @@ export default function AuthenticationView() {
                 label={"Password"}
                 type={"password"}
                 value={password}
-                inputProps={{
-                  minLength: 8,
-                }}
                 onChange={(event) => setPassword(event.target.value)}
                 required
+                slotProps={{
+                  htmlInput: {
+                    minLength: 8,
+                  },
+                }}
               />
             </Stack>
             <Box
@@ -122,21 +124,25 @@ export default function AuthenticationView() {
                 label={"Password"}
                 type={"password"}
                 value={password}
-                inputProps={{
-                  minLength: 8,
-                }}
                 onChange={(event) => setPassword(event.target.value)}
                 required
+                slotProps={{
+                  htmlInput: {
+                    minLength: 8,
+                  },
+                }}
               />
               <TextField
                 label={"Confirm Password"}
                 type={"password"}
                 value={confirmPassword}
-                inputProps={{
-                  minLength: 8,
-                }}
                 onChange={(event) => setConfirmPassword(event.target.value)}
                 required
+                slotProps={{
+                  htmlInput: {
+                    minLength: 8,
+                  },
+                }}
               />
             </Stack>
             <Box

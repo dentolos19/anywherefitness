@@ -96,14 +96,18 @@ export default function WorkoutDialog(props: WorkoutDialogProps) {
               label={"Reps"}
               value={reps}
               onChange={(e) => setReps(parseInt(e.target.value))}
-              inputProps={{ min: 0 }}
+              slotProps={{
+                htmlInput: { min: 0 },
+              }}
             />
             <TextField
               type={"number"}
               label={"Sets"}
               value={sets}
               onChange={(e) => setSets(parseInt(e.target.value))}
-              inputProps={{ min: 0 }}
+              slotProps={{
+                htmlInput: { min: 0 },
+              }}
             />
             <TextField
               type={"time"}

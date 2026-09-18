@@ -2,7 +2,7 @@
 
 import { Add } from "@mui/icons-material";
 import { Container, Fab, Stack } from "@mui/material";
-import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
+import { unstable_useEnhancedEffect as useEnhancedEffect } from "@mui/material/utils";
 import { useState } from "react";
 
 import AdvertisementItem from "@/app/advertisements/_components/advertisement-item";

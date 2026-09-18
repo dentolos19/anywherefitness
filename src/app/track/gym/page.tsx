@@ -13,7 +13,7 @@ import {
   SpeedDialAction,
   Typography,
 } from "@mui/material";
-import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
+import { unstable_useEnhancedEffect as useEnhancedEffect } from "@mui/material/utils";
 import { useState } from "react";
 
 import { useApp } from "@/components/app-context";
@@ -107,14 +107,26 @@ export default function Page() {
           )}
         </List>
         <SpeedDial ariaLabel={""} icon={<Add />} sx={{ position: "fixed", bottom: { xs: 80, sm: 30 }, right: 30 }}>
-          <SpeedDialAction icon={<MonitorHeart />} tooltipTitle={"Rest"} tooltipOpen />
+          <SpeedDialAction
+            icon={<MonitorHeart />}
+            slotProps={{
+              tooltip: {
+                title: "Rest",
+                open: true,
+              },
+            }}
+          />
           <SpeedDialAction
             icon={<FitnessCenter />}
-            tooltipTitle={"Workout"}
-            tooltipOpen
             onClick={() => {
               setDialogData(undefined);
               setDialogOpen(true);
+            }}
+            slotProps={{
+              tooltip: {
+                title: "Workout",
+                open: true,
+              },
             }}
           />
         </SpeedDial>
