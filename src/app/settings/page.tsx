@@ -2,7 +2,7 @@
 
 import { Edit } from "@mui/icons-material";
 import { Avatar, Badge, Box, Button, Container, IconButton, Paper, Stack, TextField, Typography } from "@mui/material";
-import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
+import { unstable_useEnhancedEffect as useEnhancedEffect } from "@mui/material/utils";
 import { ChangeEvent, useState } from "react";
 
 import { useApp } from "@/components/app-context";

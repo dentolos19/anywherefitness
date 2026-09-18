@@ -1,9 +1,8 @@
-@tailwind components;
-@tailwind utilities;
+@layer theme, tailwind, components, utilities;
 
-@layer tailwind {
-  @tailwind base;
-}
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(tailwind);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 html {
   overflow: hidden;

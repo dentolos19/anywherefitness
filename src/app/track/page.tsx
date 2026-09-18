@@ -49,31 +49,47 @@ export default function Page() {
         <SpeedDial ariaLabel={""} icon={<Add />} sx={{ position: "fixed", bottom: { xs: 80, sm: 30 }, left: 30 }}>
           <SpeedDialAction
             icon={<MusicNote />}
-            tooltipTitle={"Music"}
-            tooltipPlacement={"right"}
-            tooltipOpen
             onClick={handleTodo}
+            slotProps={{
+              tooltip: {
+                title: "Music",
+                placement: "right",
+                open: true,
+              },
+            }}
           />
           <SpeedDialAction
             icon={<MonitorHeart />}
-            tooltipTitle={"HRM"}
-            tooltipPlacement={"right"}
-            tooltipOpen
             onClick={handleTodo}
+            slotProps={{
+              tooltip: {
+                title: "HRM",
+                placement: "right",
+                open: true,
+              },
+            }}
           />
           <SpeedDialAction
             icon={<FitnessCenter />}
-            tooltipTitle={"Gym"}
-            tooltipPlacement={"right"}
-            tooltipOpen
             onClick={handleGym}
+            slotProps={{
+              tooltip: {
+                title: "Gym",
+                placement: "right",
+                open: true,
+              },
+            }}
           />
           <SpeedDialAction
             icon={<PlayArrow />}
-            tooltipTitle={"Activities"}
-            tooltipPlacement={"right"}
-            tooltipOpen
             onClick={handleActivities}
+            slotProps={{
+              tooltip: {
+                title: "Activities",
+                placement: "right",
+                open: true,
+              },
+            }}
           />
         </SpeedDial>
       </Box>
