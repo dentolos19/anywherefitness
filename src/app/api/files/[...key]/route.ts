@@ -10,8 +10,10 @@ export async function GET(request: Request, context: { params: { key: string[] }
     const headers = new Headers();
     object.writeHttpMetadata(headers);
     headers.set("Cache-Control", "private, max-age=3600");
+    headers.set("Content-Security-Policy", "sandbox");
     headers.set("Content-Length", object.size.toString());
     headers.set("ETag", object.httpEtag);
+    headers.set("X-Content-Type-Options", "nosniff");
     if (record?.type) headers.set("Content-Type", record.type);
     else if (!headers.has("Content-Type")) headers.set("Content-Type", "application/octet-stream");
     return new Response(object.body, { headers });

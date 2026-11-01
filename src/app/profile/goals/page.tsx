@@ -3,6 +3,7 @@
 import { Add, Check } from "@mui/icons-material";
 import {
   Container,
+  Alert,
   Fab,
   IconButton,
   List,
@@ -23,6 +24,7 @@ import { Goal } from "@/lib/types";
 export default function Page() {
   const { user } = useApp();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [profile, setProfile] = useState<Profile>();
   const [goals, setGoals] = useState<Goal[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -30,23 +32,28 @@ export default function Page() {
 
   useEffect(() => {
     if (!user) return;
-    getProfile(user.id).then((profile) => {
-      setProfile(profile);
-      setGoals(profile.goals || []);
-      setLoading(false);
-    });
+    getProfile(user.id)
+      .then((profile) => {
+        setProfile(profile);
+        setGoals(profile.goals || []);
+      })
+      .catch(() => setError("Unable to load your profile."))
+      .finally(() => setLoading(false));
   }, [user]);
 
   if (loading) return <LoadingView />;
+  if (error) return <Alert severity="error">{error}</Alert>;
 
   const updateChanges = (value: Goal[]) => {
     if (!profile) return;
     setLoading(true);
-    updateProfile(profile.id, { goals: value }).then((newProfile) => {
-      setGoals(value);
-      setProfile(newProfile);
-      setLoading(false);
-    });
+    updateProfile(profile.id, { goals: value })
+      .then((newProfile) => {
+        setGoals(value);
+        setProfile(newProfile);
+      })
+      .catch(() => alert("Unable to update goals."))
+      .finally(() => setLoading(false));
   };
 
   const handleDialogClose = (value: Goal | undefined) => {

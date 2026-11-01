@@ -12,17 +12,19 @@ import { Post, createPost, deletePost, getPosts } from "@/lib/database";
 
 export default function Page() {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [posts, setPosts] = useState<Post[]>([]);
   const [open, setOpen] = useState(false);
 
   useEnhancedEffect(() => {
-    getPosts().then((posts) => {
-      setPosts(posts.items);
-      setLoading(false);
-    });
+    getPosts()
+      .then((posts) => setPosts(posts.items))
+      .catch(() => setError("Unable to load posts."))
+      .finally(() => setLoading(false));
   }, []);
 
   if (loading) return <LoadingView />;
+  if (error) return <Alert severity="error">{error}</Alert>;
 
   const handlePost = (value: PostDialogData | undefined) => {
     setOpen(false);

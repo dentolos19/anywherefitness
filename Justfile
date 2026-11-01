@@ -1,8 +1,13 @@
 set dotenv-load
+set dotenv-filename := dotenv_file
+set dotenv-override
+
+environment := ""
+dotenv_file := if environment == "" { ".env" } else { ".env." + environment }
 
 # Accept the shared setup mode. No containers need to stay running.
 setup mode="": install
-    just migrate --local
+    just environment={{ quote(environment) }} migrate --local
 
 install:
     bun install --frozen-lockfile
@@ -14,7 +19,7 @@ build:
     bun run build
 
 check:
-    bun run check
+    bun lint --fix && bun fmt && bun check --no-script
 
 migrate *args:
     bun run db:migrate {{ args }}
@@ -22,4 +27,6 @@ migrate *args:
 deploy: install build
     #!/usr/bin/env bash
     set -euo pipefail
-    bun run deploy
+    test -f {{ quote(dotenv_file) }}
+    just environment={{ quote(environment) }} migrate --remote
+    bun run deploy --prebuilt --secrets-file {{ quote(dotenv_file) }}

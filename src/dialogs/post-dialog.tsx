@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField, Typography } from "@mui/material";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 type PostDialogProps = {
   open: boolean;
@@ -14,6 +14,14 @@ export type PostDialogData = {
 export default function PostDialog(props: PostDialogProps) {
   const [message, setMessage] = useState<string>("");
   const [cover, setCover] = useState<File | undefined>(undefined);
+  const [coverUrl, setCoverUrl] = useState("");
+
+  useEffect(() => {
+    if (!cover) return;
+    const url = URL.createObjectURL(cover);
+    setCoverUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [cover]);
 
   const handleCancel = () => {
     props.onClose(undefined);
@@ -44,9 +52,9 @@ export default function PostDialog(props: PostDialogProps) {
       <DialogContent>
         <Stack spacing={2}>
           <Typography>What&apos;s on your mind? Share it with the world!</Typography>
-          {cover && (
+          {cover && coverUrl && (
             <>
-              <img src={URL.createObjectURL(cover)} />
+              <img src={coverUrl} alt="Post cover preview" />
               <Typography align={"center"}>{cover.name}</Typography>
             </>
           )}

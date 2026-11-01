@@ -10,7 +10,7 @@ import { getFileUrl, logoutUser, updateUser } from "@/lib/database";
 
 export default function Page() {
   const { user, setUser } = useApp();
-  const [name, setName] = useState<string>();
+  const [name, setName] = useState(user?.name || "");
 
   useEnhancedEffect(() => {
     if (!user) return;
@@ -22,24 +22,30 @@ export default function Page() {
     if (!file) return;
     const form = new FormData();
     form.append("avatar", file);
-    updateUser(form).then((user) => {
-      setUser(user);
-      alert("Your avatar has been updated!");
-    });
+    updateUser(form)
+      .then((user) => {
+        setUser(user);
+        alert("Your avatar has been updated!");
+      })
+      .catch(() => alert("Unable to update your avatar."));
   };
 
   const handleUpdate = () => {
     const form = new FormData();
-    form.append("name", name!);
-    updateUser(form).then((user) => {
-      setUser(user);
-      alert("Your account has been updated!");
-    });
+    form.append("name", name);
+    updateUser(form)
+      .then((user) => {
+        setUser(user);
+        alert("Your account has been updated!");
+      })
+      .catch(() => alert("Unable to update your account."));
   };
 
   const handleLogout = () => {
-    logoutUser();
-    setUser(undefined);
+    logoutUser().then(
+      () => setUser(undefined),
+      () => alert("Unable to log out."),
+    );
   };
 
   return (
@@ -70,7 +76,7 @@ export default function Page() {
               }
             >
               <Avatar
-                src={user && getFileUrl(user, user.avatar)}
+                src={user?.avatar && getFileUrl(user.avatar)}
                 sx={{
                   width: 100,
                   height: 100,

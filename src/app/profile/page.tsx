@@ -29,7 +29,7 @@ export default function Page() {
               gap: 2,
             }}
           >
-            <Avatar src={user?.avatar && getFileUrl(user, user.avatar)} sx={{ width: 100, height: 100 }} />
+            <Avatar src={user?.avatar && getFileUrl(user.avatar)} sx={{ width: 100, height: 100 }} />
             <Box>
               <Typography variant={"h5"}>{user?.name}</Typography>
               <Typography color={"text.secondary"}>Rookie</Typography>

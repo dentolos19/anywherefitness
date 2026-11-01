@@ -1,7 +1,7 @@
 "use client";
 
 import { Add } from "@mui/icons-material";
-import { Container, Fab, Stack } from "@mui/material";
+import { Alert, Container, Fab, Stack } from "@mui/material";
 import { unstable_useEnhancedEffect as useEnhancedEffect } from "@mui/material/utils";
 import { useState } from "react";
 
@@ -12,17 +12,19 @@ import { Advertisement, createAdvertisement, deleteAdvertisement, getAdvertiseme
 
 export default function Page() {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [advertisements, setAdvertisements] = useState<Advertisement[]>([]);
   const [open, setOpen] = useState(false);
 
   useEnhancedEffect(() => {
-    getAdvertisements().then((advertisements) => {
-      setAdvertisements(advertisements.items);
-      setLoading(false);
-    });
+    getAdvertisements()
+      .then((advertisements) => setAdvertisements(advertisements.items))
+      .catch(() => setError("Unable to load advertisements."))
+      .finally(() => setLoading(false));
   }, []);
 
   if (loading) return <LoadingView />;
+  if (error) return <Alert severity="error">{error}</Alert>;
 
   const handlePost = (value: PostAdvertisementDialogData | undefined) => {
     setOpen(false);

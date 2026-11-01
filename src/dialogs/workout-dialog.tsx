@@ -95,7 +95,7 @@ export default function WorkoutDialog(props: WorkoutDialogProps) {
               type={"number"}
               label={"Reps"}
               value={reps}
-              onChange={(e) => setReps(parseInt(e.target.value))}
+              onChange={(e) => setReps(Number(e.target.value))}
               slotProps={{
                 htmlInput: { min: 0 },
               }}
@@ -104,7 +104,7 @@ export default function WorkoutDialog(props: WorkoutDialogProps) {
               type={"number"}
               label={"Sets"}
               value={sets}
-              onChange={(e) => setSets(parseInt(e.target.value))}
+              onChange={(e) => setSets(Number(e.target.value))}
               slotProps={{
                 htmlInput: { min: 0 },
               }}
