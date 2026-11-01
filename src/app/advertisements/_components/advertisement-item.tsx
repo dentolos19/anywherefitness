@@ -36,7 +36,7 @@ export default function AdvertisementItem(props: AdvertisementItemProps) {
           <Avatar
             src={
               props.advertisement.expand.author.avatar &&
-              getFileUrl(props.advertisement.expand.author, props.advertisement.expand.author.avatar)
+              getFileUrl(props.advertisement.expand.author.avatar)
             }
           />
         }

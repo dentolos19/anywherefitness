@@ -8,7 +8,6 @@ import { getDatabase } from "@/lib/database/server";
 const fields = {
   author: post.authorId,
   authorAvatar: user.avatar,
-  authorEmail: user.email,
   authorId: user.id,
   authorName: user.name,
   authorUsername: user.username,
@@ -25,7 +24,6 @@ const format = (record: Awaited<ReturnType<typeof list>>[number]) => ({
   expand: {
     author: {
       avatar: record.authorAvatar,
-      email: record.authorEmail,
       id: record.authorId,
       name: record.authorName,
       username: record.authorUsername,
@@ -84,7 +82,14 @@ export async function POST(request: Request) {
         author: record.authorId,
         cover: record.cover,
         created: record.createdAt,
-        expand: { author: currentUser },
+        expand: {
+          author: {
+            avatar: currentUser.avatar,
+            id: currentUser.id,
+            name: currentUser.name,
+            username: currentUser.username,
+          },
+        },
         id: record.id,
         message: record.message,
       },

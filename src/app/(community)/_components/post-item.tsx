@@ -36,7 +36,7 @@ export default function PostItem(props: PostItemProps) {
         avatar={
           <Avatar
             src={
-              props.post.expand.author.avatar && getFileUrl(props.post.expand.author, props.post.expand.author.avatar)
+              props.post.expand.author.avatar && getFileUrl(props.post.expand.author.avatar)
             }
           />
         }
@@ -66,7 +66,7 @@ export default function PostItem(props: PostItemProps) {
           )
         }
       />
-      {props.post.cover && <CardMedia component={"img"} src={getFileUrl(props.post, props.post.cover)} />}
+      {props.post.cover && <CardMedia component={"img"} src={getFileUrl(props.post.cover)} />}
       <CardContent>
         <Typography>{props.post.message}</Typography>
       </CardContent>

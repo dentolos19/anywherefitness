@@ -1,7 +1,7 @@
 import { Metadata } from "next";
+import type { ReactNode } from "react";
 
 import AppProvider from "@/components/app-provider";
-import { LayoutProps } from "@/types";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./globals.css";
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Anywhere Fitness",
 };
 
-export default function Layout(props: LayoutProps) {
+export default function Layout(props: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>

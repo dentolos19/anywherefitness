@@ -10,11 +10,13 @@ export type User = {
   username: string;
 };
 
+type PublicUser = Omit<User, "email">;
+
 export type Post = {
   author: string;
   cover: string;
   created: string;
-  expand: { author: User };
+  expand: { author: PublicUser };
   id: string;
   message: string;
 };
@@ -23,7 +25,7 @@ export type Advertisement = {
   author: string;
   created: string;
   description: string;
-  expand: { author: User };
+  expand: { author: PublicUser };
   id: string;
   title: string;
 };
@@ -122,7 +124,7 @@ export function updateProfile(id: string, data: Partial<Omit<Profile, "id" | "us
   });
 }
 
-export function getFileUrl(_record: { id: string }, fileName: string) {
+export function getFileUrl(fileName: string) {
   const path = fileName
     .split("/")
     .map((part) => encodeURIComponent(part))

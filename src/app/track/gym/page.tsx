@@ -3,6 +3,7 @@
 import { Add, Delete, FitnessCenter, MonitorHeart } from "@mui/icons-material";
 import {
   Container,
+  Alert,
   IconButton,
   List,
   ListItem,
@@ -26,30 +27,35 @@ export default function Page() {
   const { user } = useApp();
   const [profile, setProfile] = useState<Profile>();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogData, setDialogData] = useState<Workout | undefined>(undefined);
 
   useEnhancedEffect(() => {
     if (!user) return;
-    getProfile(user.id).then((profile) => {
-      setProfile(profile);
-      setWorkouts(profile.workouts || []);
-      setLoading(false);
-    });
-    setLoading(false);
-  }, []);
+    getProfile(user.id)
+      .then((profile) => {
+        setProfile(profile);
+        setWorkouts(profile.workouts || []);
+      })
+      .catch(() => setError("Unable to load your profile."))
+      .finally(() => setLoading(false));
+  }, [user?.id]);
 
   if (loading) return <LoadingView />;
+  if (error) return <Alert severity="error">{error}</Alert>;
 
   const updateChanges = (value: Workout[]) => {
     if (!profile) return;
     setLoading(true);
-    updateProfile(profile.id, { workouts: value }).then((newProfile) => {
-      setWorkouts(value);
-      setProfile(newProfile);
-      setLoading(false);
-    });
+    updateProfile(profile.id, { workouts: value })
+      .then((newProfile) => {
+        setWorkouts(value);
+        setProfile(newProfile);
+      })
+      .catch(() => alert("Unable to update workouts."))
+      .finally(() => setLoading(false));
   };
 
   const handleDialogClose = (value: Workout | undefined) => {
