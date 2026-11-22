@@ -1,4 +1,4 @@
-# Cloudflare development
+# Cloudflare Development
 
 `just setup` installs dependencies and applies the local D1 migrations. `just start` runs the app and `just build` creates the Cloudflare build output. The new local D1 state lives in `.cloudflare/state`; existing `.wrangler/state` data remains on disk.
 
