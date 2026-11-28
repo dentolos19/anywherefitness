@@ -1,4 +1,4 @@
-import { deleteSession, getSessionUser } from "@/lib/database/auth";
+import { deleteSession, getSessionUser } from "#/lib/database/auth";
 
 export async function GET(request: Request) {
   try {

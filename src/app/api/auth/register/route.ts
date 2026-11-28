@@ -1,6 +1,6 @@
-import { createSession, hashPassword } from "@/lib/database/auth";
-import { profile, user } from "@/lib/database/schema";
-import { getDatabase } from "@/lib/database/server";
+import { createSession, hashPassword } from "#/lib/database/auth";
+import { profile, user } from "#/lib/database/schema";
+import { getDatabase } from "#/lib/database/server";
 
 export async function POST(request: Request) {
   try {

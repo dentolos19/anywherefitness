@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import type { ReactNode } from "react";
 
-import AppProvider from "@/components/app-provider";
+import AppProvider from "#/components/app-provider";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./globals.css";

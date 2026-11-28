@@ -15,8 +15,8 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-import { useApp } from "@/components/app-context";
-import { Advertisement, getFileUrl } from "@/lib/database";
+import { useApp } from "#/components/app-context";
+import { Advertisement, getFileUrl } from "#/lib/database";
 
 type AdvertisementItemProps = {
   advertisement: Advertisement;
@@ -34,10 +34,7 @@ export default function AdvertisementItem(props: AdvertisementItemProps) {
       <CardHeader
         avatar={
           <Avatar
-            src={
-              props.advertisement.expand.author.avatar &&
-              getFileUrl(props.advertisement.expand.author.avatar)
-            }
+            src={props.advertisement.expand.author.avatar && getFileUrl(props.advertisement.expand.author.avatar)}
           />
         }
         title={props.advertisement.expand.author.name}

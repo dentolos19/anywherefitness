@@ -1,8 +1,8 @@
 import { desc, eq } from "drizzle-orm";
 
-import { authError, requireUser } from "@/lib/database/auth";
-import { advertisement, user } from "@/lib/database/schema";
-import { getDatabase } from "@/lib/database/server";
+import { authError, requireUser } from "#/lib/database/auth";
+import { advertisement, user } from "#/lib/database/schema";
+import { getDatabase } from "#/lib/database/server";
 
 export async function GET(request: Request) {
   try {

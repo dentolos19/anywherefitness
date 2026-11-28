@@ -5,8 +5,8 @@ import { Avatar, Badge, Box, Button, Container, IconButton, Paper, Stack, TextFi
 import { unstable_useEnhancedEffect as useEnhancedEffect } from "@mui/material/utils";
 import { ChangeEvent, useState } from "react";
 
-import { useApp } from "@/components/app-context";
-import { getFileUrl, logoutUser, updateUser } from "@/lib/database";
+import { useApp } from "#/components/app-context";
+import { getFileUrl, logoutUser, updateUser } from "#/lib/database";
 
 export default function Page() {
   const { user, setUser } = useApp();

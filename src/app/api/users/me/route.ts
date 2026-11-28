@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 
-import { createAsset, deleteAsset, MAX_ASSET_SIZE } from "@/lib/database/assets";
-import { authError, requireUser } from "@/lib/database/auth";
-import { user } from "@/lib/database/schema";
-import { getDatabase } from "@/lib/database/server";
+import { createAsset, deleteAsset, MAX_ASSET_SIZE } from "#/lib/database/assets";
+import { authError, requireUser } from "#/lib/database/auth";
+import { user } from "#/lib/database/schema";
+import { getDatabase } from "#/lib/database/server";
 
 export async function PATCH(request: Request) {
   let avatarId = "";

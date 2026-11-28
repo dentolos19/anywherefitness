@@ -25,12 +25,12 @@ const query = {
   values: () => query,
   returning: async () => [row],
 };
-mock.module("@/lib/database/server", () => ({ getDatabase: () => ({ select: () => query, insert: () => query }) }));
-mock.module("@/lib/database/auth", () => ({
+mock.module("#/lib/database/server", () => ({ getDatabase: () => ({ select: () => query, insert: () => query }) }));
+mock.module("#/lib/database/auth", () => ({
   requireUser: async () => currentUser,
   authError: () => new Response(null, { status: 500 }),
 }));
-mock.module("@/lib/database/assets", () => ({
+mock.module("#/lib/database/assets", () => ({
   MAX_ASSET_SIZE: 50 * 1024 * 1024,
   createAsset: async () => ({ id: "asset" }),
   deleteAsset: async () => {},

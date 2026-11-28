@@ -1,9 +1,9 @@
 import { and, eq } from "drizzle-orm";
 
-import { deleteAsset } from "@/lib/database/assets";
-import { authError, requireUser } from "@/lib/database/auth";
-import { post } from "@/lib/database/schema";
-import { getDatabase } from "@/lib/database/server";
+import { deleteAsset } from "#/lib/database/assets";
+import { authError, requireUser } from "#/lib/database/auth";
+import { post } from "#/lib/database/schema";
+import { getDatabase } from "#/lib/database/server";
 
 export async function DELETE(request: Request, context: { params: { id: string } }) {
   try {

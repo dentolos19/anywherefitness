@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 
-import { asset } from "@/lib/database/schema";
-import { getBucket, getDatabase } from "@/lib/database/server";
+import { asset } from "#/lib/database/schema";
+import { getBucket, getDatabase } from "#/lib/database/server";
 
 export const MAX_ASSET_SIZE = 50 * 1024 * 1024;
 

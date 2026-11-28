@@ -5,7 +5,7 @@ import { Box, Chip, SpeedDial, SpeedDialAction } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import ActivitiesDialog from "@/dialogs/activities-dialog";
+import ActivitiesDialog from "#/dialogs/activities-dialog";
 
 import MapView from "./_components/map-view";
 

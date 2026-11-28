@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField, Typography } from "@mui/material";
 import { FormEvent, useState } from "react";
 
-import { Workout } from "@/lib/types";
+import { Workout } from "#/lib/types";
 
 import WorkoutSelectorDialog from "./workout-selector-dialog";
 

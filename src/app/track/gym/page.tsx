@@ -2,8 +2,8 @@
 
 import { Add, Delete, FitnessCenter, MonitorHeart } from "@mui/icons-material";
 import {
-  Container,
   Alert,
+  Container,
   IconButton,
   List,
   ListItem,
@@ -17,11 +17,11 @@ import {
 import { unstable_useEnhancedEffect as useEnhancedEffect } from "@mui/material/utils";
 import { useState } from "react";
 
-import { useApp } from "@/components/app-context";
-import LoadingView from "@/components/loading-view";
-import WorkoutDialog from "@/dialogs/workout-dialog";
-import { Profile, getProfile, updateProfile } from "@/lib/database";
-import { Workout } from "@/lib/types";
+import { useApp } from "#/components/app-context";
+import LoadingView from "#/components/loading-view";
+import WorkoutDialog from "#/dialogs/workout-dialog";
+import { getProfile, Profile, updateProfile } from "#/lib/database";
+import { Workout } from "#/lib/types";
 
 export default function Page() {
   const { user } = useApp();

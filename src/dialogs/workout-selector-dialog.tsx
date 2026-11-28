@@ -11,7 +11,7 @@ import {
   ListSubheader,
 } from "@mui/material";
 
-import workouts from "@/data/workouts.json";
+import workouts from "#/data/workouts.json";
 
 type WorkoutSelectorDialogProps = {
   open: boolean;

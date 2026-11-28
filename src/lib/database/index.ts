@@ -1,6 +1,6 @@
 "use client";
 
-import { Goal, Workout } from "@/lib/types";
+import { Goal, Workout } from "#/lib/types";
 
 export type User = {
   avatar: string;

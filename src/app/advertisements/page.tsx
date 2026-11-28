@@ -5,10 +5,10 @@ import { Alert, Container, Fab, Stack } from "@mui/material";
 import { unstable_useEnhancedEffect as useEnhancedEffect } from "@mui/material/utils";
 import { useState } from "react";
 
-import AdvertisementItem from "@/app/advertisements/_components/advertisement-item";
-import LoadingView from "@/components/loading-view";
-import PostAdvertisementDialog, { PostAdvertisementDialogData } from "@/dialogs/post-advertisement-dialog";
-import { Advertisement, createAdvertisement, deleteAdvertisement, getAdvertisements } from "@/lib/database";
+import AdvertisementItem from "#/app/advertisements/_components/advertisement-item";
+import LoadingView from "#/components/loading-view";
+import PostAdvertisementDialog, { PostAdvertisementDialogData } from "#/dialogs/post-advertisement-dialog";
+import { Advertisement, createAdvertisement, deleteAdvertisement, getAdvertisements } from "#/lib/database";
 
 export default function Page() {
   const [loading, setLoading] = useState(true);

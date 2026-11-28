@@ -16,8 +16,8 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-import { useApp } from "@/components/app-context";
-import { Post, getFileUrl } from "@/lib/database";
+import { useApp } from "#/components/app-context";
+import { getFileUrl, Post } from "#/lib/database";
 
 type PostItemProps = {
   post: Post;
@@ -33,13 +33,7 @@ export default function PostItem(props: PostItemProps) {
   return (
     <Card>
       <CardHeader
-        avatar={
-          <Avatar
-            src={
-              props.post.expand.author.avatar && getFileUrl(props.post.expand.author.avatar)
-            }
-          />
-        }
+        avatar={<Avatar src={props.post.expand.author.avatar && getFileUrl(props.post.expand.author.avatar)} />}
         title={props.post.expand.author.name}
         subheader={props.post.created.toString()}
         action={

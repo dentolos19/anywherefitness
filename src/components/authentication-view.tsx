@@ -1,9 +1,9 @@
 import { Box, Button, Container, Paper, Stack, TextField } from "@mui/material";
 import { FormEvent, useState } from "react";
 
-import { useApp } from "@/components/app-context";
-import LoadingView from "@/components/loading-view";
-import { loginUser, registerUser } from "@/lib/database";
+import { useApp } from "#/components/app-context";
+import LoadingView from "#/components/loading-view";
+import { loginUser, registerUser } from "#/lib/database";
 
 export default function AuthenticationView() {
   const { setUser } = useApp();

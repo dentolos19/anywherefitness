@@ -1,7 +1,7 @@
 import { and, eq, gt } from "drizzle-orm";
 
-import { session, user } from "@/lib/database/schema";
-import { getDatabase } from "@/lib/database/server";
+import { session, user } from "#/lib/database/schema";
+import { getDatabase } from "#/lib/database/server";
 
 const COOKIE_NAME = "anywherefitness_session";
 const ITERATIONS = 100_000;

@@ -1,5 +1,5 @@
-import { getAsset } from "@/lib/database/assets";
-import { authError, requireUser } from "@/lib/database/auth";
+import { getAsset } from "#/lib/database/assets";
+import { authError, requireUser } from "#/lib/database/auth";
 
 export async function GET(request: Request, context: { params: { key: string[] } }) {
   try {

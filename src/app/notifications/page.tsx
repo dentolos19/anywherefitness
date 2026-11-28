@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-import NotificationDialog from "@/dialogs/notification-dialog";
+import NotificationDialog from "#/dialogs/notification-dialog";
 
 const notifications = [
   {

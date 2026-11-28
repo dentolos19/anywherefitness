@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import { createSession, verifyPassword } from "@/lib/database/auth";
-import { user } from "@/lib/database/schema";
-import { getDatabase } from "@/lib/database/server";
+import { createSession, verifyPassword } from "#/lib/database/auth";
+import { user } from "#/lib/database/schema";
+import { getDatabase } from "#/lib/database/server";
 
 export async function POST(request: Request) {
   try {

@@ -5,7 +5,7 @@
 .env*
 .idea/
 .next/
-.open-next/
+.playwright-cli/
 .tmp/
 .vinext/
 .vs/

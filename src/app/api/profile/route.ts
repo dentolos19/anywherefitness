@@ -1,9 +1,9 @@
 import { and, eq } from "drizzle-orm";
 
-import { authError, requireUser } from "@/lib/database/auth";
-import { profile } from "@/lib/database/schema";
-import { getDatabase } from "@/lib/database/server";
-import { Goal, Workout } from "@/lib/types";
+import { authError, requireUser } from "#/lib/database/auth";
+import { profile } from "#/lib/database/schema";
+import { getDatabase } from "#/lib/database/server";
+import { Goal, Workout } from "#/lib/types";
 
 const format = (record: typeof profile.$inferSelect) => ({
   goals: record.goals as Goal[],
